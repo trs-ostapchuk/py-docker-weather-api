@@ -7,8 +7,9 @@ def get_weather(city_name: str) -> None:
     if not api_key:
         raise ValueError("API_KEY environment variable not set!")
 
-    url = f"http://api.weatherapi.com/v1/current.json?key={api_key}&q={city_name}&aqi=no"
-    response = requests.get(url)
+    URL = f"http://api.weatherapi.com/v1/current.json?"
+    FILTERING = "key={api_key}&q={city_name}&aqi=no"
+    response = requests.get(URL + FILTERING)
     data = response.json()
 
     country = data["location"]["country"]
